@@ -1,57 +1,206 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    color: #333;
 }
 
 .container {
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     text-align: center;
+    max-width: 600px;
+    width: 100%;
 }
 
 h1 {
-    color: #333;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.settings {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.settings label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.settings select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+}
+
+#hangman-art {
+    font-family: monospace;
+    font-size: 1.2em;
+    margin: 20px 0;
+    white-space: pre;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
 }
 
 #word-display {
-    font-size: 2em;
+    font-size: 2.5em;
     margin: 20px 0;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
+    font-weight: bold;
+    color: #333;
 }
 
-#wrong-letters, #attempts {
+#wrong-letters, #attempts, #score {
     margin: 10px 0;
+    font-size: 1.1em;
 }
 
-input {
-    padding: 10px;
-    font-size: 1em;
-    margin: 10px;
+#score {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#keyboard {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 5px;
+}
+
+.key {
+    padding: 12px 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    text-transform: uppercase;
+}
+
+.key:hover:not(:disabled) {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.key:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.key.correct {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.key.incorrect {
+    background-color: #f44336;
+    color: white;
+    border-color: #f44336;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 1em;
-    margin: 10px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin: 10px 5px;
     cursor: pointer;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#hint-btn {
+    background-color: #ff9800;
+}
+
+#hint-btn:hover {
+    background-color: #e68900;
+}
+
+#new-game-btn {
+    background-color: #2196F3;
+}
+
+#new-game-btn:hover {
+    background-color: #0b7dda;
 }
 
 #message {
     margin-top: 20px;
     font-weight: bold;
+    font-size: 1.2em;
+    min-height: 30px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        max-width: 95%;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    #word-display {
+        font-size: 2em;
+        letter-spacing: 5px;
+    }
+    .settings {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .settings select {
+        width: 100%;
+        max-width: 200px;
+    }
+    #keyboard {
+        gap: 5px;
+    }
+    .keyboard-row {
+        gap: 3px;
+    }
+    .key {
+        padding: 10px 12px;
+        font-size: 0.9em;
+        min-width: 35px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        margin: 5px;
+    }
 }
